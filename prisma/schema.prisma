@@ -1,0 +1,75 @@
+datasource db {
+  provider = "mysql"
+  url      = "mysql://goodchat_user:StrongPass123!@localhost:3306/goodchat_db"
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+
+model User {
+  id          Int        @id @default(autoincrement())
+  email       String     @unique
+  active_code String     @unique
+  ip0         String     @default("0.0.0.0")
+  ip1         String     @default("0.0.0.0")
+  ip2         String     @default("0.0.0.0")
+  token       String     @unique
+  createdAt   DateTime   @default(now())
+  lastLogin   DateTime?
+  reqs        data_req[]
+  payments    payment[]
+  payments_finaly    payment_Finaly[]
+  payments_base    payment_Base[]
+}
+
+model data_req {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+  request_count Int      @default(0)
+  createdAt     DateTime @default(now())
+  lastLogin     DateTime?
+}
+
+model payment {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  plane     String
+  price     String
+  createdAt DateTime @default(now())
+}
+model payment_Base {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  plane     String
+  price     String
+  status     String
+  createdAt DateTime @default(now())
+}
+model payment_Finaly {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  plane     String
+  trans_id  String
+  order_id  String
+  card_holder  String
+  amount     String
+  np_status     String
+  createdAt DateTime @default(now())
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String
+  comment   String
+  ip        String
+  createdAt DateTime @default(now())
+}

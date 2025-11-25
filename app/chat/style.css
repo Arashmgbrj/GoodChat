@@ -1,0 +1,194 @@
+body {
+  background: url("/img/nodes.gif")
+  
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  padding: 2rem;
+  color: #f1f5f9;
+  background-color: #0f172a00;
+  direction: rtl;
+  
+
+}
+.spinner {
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 5px auto;
+}
+.chat-bg{
+  background-image: white;
+  width: 100%;
+  direction: ltr;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+div{
+  color: wheat;
+  font-weight: bold;
+}
+span{
+  color: #f1f5f9;
+}
+.text_pc{
+  color: #f1f5f9;
+  display: none;
+}
+.chat-card {
+  max-width: 880px;
+  margin: 0 auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.85); 
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease;
+}
+
+.messages {
+  flex: 1 1 auto;
+  padding: 1rem;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #1e293b, #0f172a);
+}
+
+/* پیام‌ها */
+.message {
+  max-width: 78%;
+  margin-bottom: 0.7rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  word-break: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+}
+
+/* پیام‌های کاربر (راست) */
+.message.user {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: #fff;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+/* پیام‌های بات (چپ) */
+.message.bot {
+  background: #334155;
+  color: #f1f5f9;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+  line-height: 28px;
+}
+
+/* نوار ورودی */
+.composer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+/* ناحیه تایپ */
+.composer .input-area {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: #1e293b;
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+}
+
+/* textarea */
+.composer textarea {
+  resize: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0.45rem 0;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  max-height: 120px;
+  width: 100%;
+}
+
+/* فایل پیوست */
+.file-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: #475569;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  color: #f1f5f9;
+}
+
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* ریسپانسیو */
+@media screen and (max-width: 431px) {
+  .text_pc {
+    display: none;
+  }
+  .username {
+    font-size: 10px;
+  }
+  .req {
+    font-size: 9px;
+  }
+  .img_pc {
+    display: none;
+  }
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
